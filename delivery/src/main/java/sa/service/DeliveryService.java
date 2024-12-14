@@ -55,6 +55,10 @@ public class DeliveryService {
             throw new RuntimeException();
         }
 
+        if (deliveryScheduler.isReserved(deliveryId)) {
+            deliveryScheduler.cancel(deliveryId);
+        }
+
         delivery.setDeliveryStatus(DeliveryStatus.CANCEL);
     }
 
